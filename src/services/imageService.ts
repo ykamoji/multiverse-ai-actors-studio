@@ -23,7 +23,7 @@ export async function generateSceneImage(
       promptString += `${index + 1}. ${actorId}:\n`;
       if (actor.description) promptString += `  - Visual Details: ${actor.description}\n`;
       promptString += `  - Pose/Action in this scene: ${actor.pose}\n`;
-      
+
       if (actor.imageBase64) {
         // Extract base64 and mime type
         const match = actor.imageBase64.match(/^data:(image\/[a-zA-Z+]+);base64,(.+)$/);
@@ -55,7 +55,7 @@ export async function generateSceneImage(
         prompt: promptString,
         config: {
           numberOfImages: 1,
-          outputMimeType: "image/jpeg",
+          outputMimeType: "image/png",
           aspectRatio: aspectRatio as any,
         },
       });
@@ -65,12 +65,12 @@ export async function generateSceneImage(
       }
 
       const base64EncodeString = response.generatedImages[0].image.imageBytes;
-      return `data:image/jpeg;base64,${base64EncodeString}`;
+      return `data:image/png;base64,${base64EncodeString}`;
     }
 
     const config: any = {
-      outputMimeType: "image/jpeg",
-      imageConfig: { aspectRatio: aspectRatio as any },
+      outputMimeType: "image/png",
+      imageConfig: { aspectRatio: aspectRatio as any, image_size: "4K" },
     };
 
     const response = await ai.models.generateContent({
@@ -91,10 +91,10 @@ export async function generateSceneImage(
     for (const part of responseParts) {
       if (part.inlineData) {
         const base64EncodeString: string = part.inlineData.data;
-        return `data:image/jpeg;base64,${base64EncodeString}`;
+        return `data:image/png;base64,${base64EncodeString}`;
       }
     }
-    
+
     throw new Error("Image data not found in response.");
   } catch (error) {
     console.error("Error generating image:", error);

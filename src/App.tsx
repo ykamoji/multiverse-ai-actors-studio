@@ -98,7 +98,7 @@ export default function App() {
     if (!generatedImage) return;
     const link = document.createElement("a");
     link.href = generatedImage;
-    link.download = `multiverse-scene-${Date.now()}.jpg`;
+    link.download = `multiverse-scene-${Date.now()}.png`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
