@@ -4,6 +4,8 @@
 
 # Multiverse AI Actors Studio
 
+Go to [Live App](https://ykamoji.github.io/multiverse-ai-actors-studio/)
+
 ## Overview
 
 Multiverse AI Actors Studio is a tool that lets you create composite scenes with consistent characters using cutting-edge AI. By defining character portraits, descriptions, and poses, along with an overarching scene description, you can synthesize new scenes easily.
